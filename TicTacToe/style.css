@@ -1,0 +1,326 @@
+@font-face {
+  font-family: "starjout";
+  src: url("./assets/fonts/Starjout.ttf");
+}
+@font-face {
+  font-family: "starjedi";
+  src: url("./assets/fonts/Starjedi.ttf");
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: url("./assets/cursor/cursor-blade.png"), auto;
+}
+
+/* -----------------------------------------------CELLS, GAME BOARD, SCORE BOARD, APP-------------------------------- */
+
+.app {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./assets/img/stars.gif");
+  background-size: cover;
+}
+
+.game-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.arena {
+  display: grid;
+  grid-template-columns: repeat(3, 13rem);
+  grid-template-rows: repeat(3, 13rem);
+  transform-origin: 50% 75%;
+  transform: perspective(450px) rotateX(25deg);
+  box-shadow: 7px 7px 45px rgb(246, 255, 0), -7px -7px 45px rgb(255, 238, 0);
+}
+
+.board {
+  height: 10rem;
+  width: 90%;
+  max-width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cell {
+  border: 1px solid yellow;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 60%;
+  
+}
+
+/* -----------------------------------------------PLAYERS-------------------------------- */
+.player__container {
+  height: 100%;
+  width: 40%;
+  color: rgb(226, 248, 32);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform-origin: 50% 100%;
+  transform: perspective(300px) rotateX(25deg);
+  font-family: "starjedi", sans-serif;
+}
+
+.player__container-score {
+  font-family: "starjedi", sans-serif;
+  margin: 0;
+  font-size: 6rem;
+
+  background-size: 200% auto;
+  background-clip: text;
+  transform-origin: 50% 100%;
+  transform: perspective(300px) rotateX(25deg);
+}
+
+.separator {
+  font-size: 6rem;
+  color: aliceblue;
+  transform-origin: 50% 100%;
+  transform: perspective(300px) rotateX(25deg);
+  font-family: "starjedi", sans-serif;
+  display: inline-block;
+}
+
+.first-player,
+.second-player {
+  height: 30%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transform-origin: 50% 100%;
+  transform: perspective(300px) rotateX(25deg);
+  font-size: 3rem;
+
+  letter-spacing: 0.5rem;
+}
+
+/* -----------------------------------------------MODAL-NAME-------------------------------- */
+.modal__playername,
+.modal__opponent-name {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-image: url("./assets/img/download.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modal__opponent-name {
+  background-image: url("./assets/img/name.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.greetings {
+  color: rgb(226, 83, 83);
+  font-size: 72px;
+  font-family: "starjout", sans-serif;
+}
+
+.player-name__placeholder,
+.opponent-name__placeholder,
+.opponent-name__btn,
+.player-name__btn {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "starjedi", sans-serif;
+  cursor: url("./assets/cursor/cursor-red.png"), auto;
+}
+
+.player-name__placeholder,
+.opponent-name__placeholder {
+  height: 3rem;
+  border-radius: 1.25rem;
+  border: none;
+  padding-left: 1rem;
+  width: 30%;
+}
+
+.btn {
+  height: 2.5rem;
+  border-radius: 1.25rem;
+  border: none;
+  width: 10%;
+  font-family: "starjedi", sans-serif;
+  color: whitesmoke;
+  background-color: rgb(242, 51, 51);
+  cursor: url("./assets/cursor/cursor-red.png"), auto;
+}
+
+.btn:hover {
+  background-color: green;
+  color: white;
+}
+
+/* -----------------------------------------------MODAL-OPPONENT, WINNER, DRAW-------------------------------- */
+.modal__opponent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-image: url("./assets/img/opponent.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modal__winner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: scale linear;
+  animation-duration: 3.5s;
+  z-index: 101;
+}
+
+.modal__winner_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  gap: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.modal__draw {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+   background-image: url("./assets/img/draw.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: scale linear;
+  animation-duration: 3.5s;
+  z-index: 101;
+}
+
+/* -----------------------------------------------MODIFICATORS-------------------------------- */
+
+.hide {
+  display: none;
+}
+
+.clicked {
+  text-shadow: 5px 5px 45px rgb(94, 223, 255), -5px -5px 45px rgb(94, 223, 255);
+}
+
+.light {
+  background-color: green;
+}
+
+.audio-container__btn,
+.new-game__btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: transparent;
+  background-image: url("./assets/icons/mute.ico");
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2rem;
+  background-position: center;
+  border: 0.125rem solid white;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1.25rem;
+  font-family: "starjedi", sans-serif;
+  color: white;
+  z-index: 100;
+  box-sizing: border-box;
+  cursor: url("./assets/cursor/chubaka.png"), auto;
+}
+
+.audio-container__btn img {
+  width: 40px;
+  height: 35px;
+}
+
+.audio-container__btn:hover,
+.new-game__btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+}
+
+.new-game__btn {
+  width: fit-content;
+  position: absolute;
+  top: 1rem;
+  right: 7rem;
+  padding: 0 1.5rem;
+  background-image: none;
+}
+
+/* -----------------------------------------------ANIMATIONS-------------------------------- */
+
+@keyframes scale {
+  0% {
+    background-size: 0 0;
+  }
+  25% {
+    background-size: 20% 20%;
+  }
+
+  50% {
+    background-size: 40% 40%;
+  }
+
+  75% {
+    background-size: 20% 20%;
+  }
+
+  100% {
+    background-size: 0 0;
+  }
+}

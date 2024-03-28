@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="./assets/icons/favicon.png" type="image/x-icon" />
+    <title>TicTacToe</title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="audio-container">
+        <audio class="audio-container__audio">
+          <source src="./assets/sounds/music.mp3" type="audio/mpeg" />
+        </audio>
+        <button class="audio-container__btn"></button>
+      </div>
+      <div class="new-game">
+        <button class="hide new-game__btn">New game</button>
+      </div>
+
+      <form class="modal__playername">
+        <p class="greetings">Welcom to TicTacToe!</p>
+        <input
+          class="player-name__placeholder"
+          type="placeholder"
+          placeholder="Put your name here..."
+          maxlength="12"
+        />
+        <button class="btn player-name__btn" type="submit">ok</button>
+      </form>
+      <form class="hide modal__opponent-name">
+        <p class="greetings">How is your name?</p>
+        <input
+          class="opponent-name__placeholder"
+          type="placeholder"
+          placeholder="Put your name here..."
+          maxlength="12"
+        />
+        <button class="btn opponent-name__btn" type="submit">ok</button>
+      </form>
+      <form class="hide modal__opponent">
+        <p class="greetings">Choose your opponent</p>
+        <button class="btn modal__opponent__btn" type="button" value="player">
+          Player
+        </button>
+        <button class="btn modal__opponent__btn" type="button" value="bot">
+          Darth
+        </button>
+      </form>
+      <div class="hide modal__winner">
+    
+      </div>
+
+      <div class="hide modal__draw">
+
+      </div>
+
+      <section class="hide game-wrapper">
+        <div class="board">
+          <div class="player__container">
+            <div div class="players first-player"></div>
+            <p class="player__container-score">0</p>
+          </div>
+
+          <p class="separator">vs</p>
+          <div class="player__container">
+            <p class="players second-player"></p>
+            <p class="player__container-score">0</p>
+          </div>
+        </div>
+        <div class="arena"></div>
+      </section>
+    </div>
+    <script src="./helpers/EventEmitter.js"></script>
+    <script src="./Model.js"></script>
+    <script src="./View.js"></script>
+    <script src="./Controller.js"></script>
+  </body>
+</html>
